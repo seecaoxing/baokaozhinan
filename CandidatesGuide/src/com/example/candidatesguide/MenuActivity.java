@@ -1,0 +1,141 @@
+package com.example.candidatesguide;
+
+import java.security.PublicKey;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ViewFlipper;
+
+public class MenuActivity extends Activity {
+
+	private Button findButton, shareButton, introductionButton, planButton;
+	private int[] resId = { R.drawable.huodong_item1, R.drawable.huodong_item2,
+			R.drawable.huodong_item3 };
+	private ViewFlipper viewFlipper;
+	private float startX;
+	private ViewGroup viewGroup;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.menu);
+		findButton = (Button) findViewById(R.id.find_menu_button);
+		shareButton = (Button) findViewById(R.id.share_menu_button);
+		introductionButton = (Button) findViewById(R.id.introduction_menu_button);
+		planButton = (Button) findViewById(R.id.plan_menu_button);
+		viewFlipper = (ViewFlipper) findViewById(R.id.flipper_menu);
+		 viewGroup = (ViewGroup) findViewById(R.id.linear_viewflipper);
+		automaticFlipper();	
+
+		findButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+				Intent intent = new Intent(MenuActivity.this,
+						FindActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		shareButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+				Intent intent = new Intent(MenuActivity.this,
+						ShareActivity.class);
+				startActivity(intent);
+			}
+		});
+		planButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+				Intent intent = new Intent(MenuActivity.this,
+						PlanActivity.class);
+				startActivity(intent);
+			}
+		});
+		introductionButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+				Intent intent = new Intent(MenuActivity.this,
+						IntroductionActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+       
+		viewFlipper.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent event) {
+				// TODO Auto-generated method stub
+				
+				switch (event.getAction()) {
+
+				case MotionEvent.ACTION_DOWN: {
+					startX = event.getX();					
+					break;
+				}
+
+				case MotionEvent.ACTION_MOVE: {
+					if (event.getX() - startX > 100) {
+						viewFlipper.setInAnimation(getApplicationContext(), R.anim.right_in);
+						viewFlipper.setOutAnimation(getApplicationContext(), R.anim.right_out);
+						viewFlipper.showPrevious();
+						return true;
+					} else if (startX - event.getX() > 100) {
+						viewFlipper.setInAnimation(getApplicationContext(), R.anim.left_in);
+						viewFlipper.setOutAnimation(getApplicationContext(), R.anim.left_out);
+						viewFlipper.showNext();
+						return true;
+					}
+					break;
+				}
+				case MotionEvent.ACTION_UP: {
+				
+					break;
+				}
+				}
+				return false;
+			}
+		});
+		
+
+	}
+
+	public ImageView getImageView(int resId) {
+		ImageView image = new ImageView(this);
+		//image.setImageResource(resId);
+		image.setBackgroundResource(resId);
+		return image;
+
+	}
+	public void automaticFlipper(){
+		for (int i = 0; i < resId.length; i++) {
+			viewFlipper.addView(getImageView(resId[i]));
+		}
+		viewFlipper.setInAnimation(this, R.anim.right_in);
+		viewFlipper.setOutAnimation(this, R.anim.right_out);
+		viewFlipper.setFlipInterval(3000);
+		viewFlipper.startFlipping();
+	}
+}
