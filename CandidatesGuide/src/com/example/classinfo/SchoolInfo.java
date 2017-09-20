@@ -2,7 +2,9 @@ package com.example.classinfo;
 
 import java.io.Serializable;
 
-public class SchoolInfo implements Serializable{
+import cn.bmob.v3.BmobObject;
+
+public class SchoolInfo extends BmobObject implements Serializable{
 	
 	private String school_NameString;
 	
@@ -10,7 +12,17 @@ public class SchoolInfo implements Serializable{
 	
 	private String school_IntroductionString;
 	
+	private String school_Code;
 	private String school_ImageUrlString;
+	
+	public String getSchool_Code() {
+		return school_Code;
+	}
+
+	public void setSchool_Code(String school_Code) {
+		this.school_Code = school_Code;
+	}
+
 	
 	public void setSchool_imageurl(String url){
 		this.school_ImageUrlString = url;

@@ -33,8 +33,10 @@ public class JsonSchoolInfo extends Thread {
 	private ProgressDialog progressDialog;
 	private ListView listView;
 	private Handler handler;
-	private List<SchoolInfo> data = new  ArrayList<SchoolInfo>();
+	private List<SchoolInfo> data = new ArrayList<SchoolInfo>();
 	// private List<SchoolInfo> schList = new ArrayList<SchoolInfo>();
+	private String resultJsonString;
+
 	public JsonSchoolInfo(String urlString,
 			JsonSchoolAdapter jsonSchoolAdapter, Handler handler,
 			ListView listView, Context context, ProgressDialog progressDialog,
@@ -47,7 +49,6 @@ public class JsonSchoolInfo extends Thread {
 		this.progressDialog = progressDialog;
 	}
 
-	
 	@Override
 	public void run() {
 
@@ -72,16 +73,16 @@ public class JsonSchoolInfo extends Thread {
 			while ((string = bufferedReader.readLine()) != null) {
 				stringBuffer.append(string);
 			}
-
-			System.out.println(stringBuffer.toString());
+			resultJsonString = stringBuffer.toString();
+			System.out.println("学校信息：：：：：：：：：：" + resultJsonString);
 			if (stringBuffer.toString().equals("[]")) {
 				System.out.println("error");
-				Message msg = new Message();
-				msg.what = 0x12;
-				handler.sendMessage(msg);
+				handler.sendEmptyMessage(0x12);
+				handler.sendEmptyMessage(0x11);
+				return;
 			}
 
-			data =	parseJson(stringBuffer.toString());
+			data = parseJson(resultJsonString);
 			setSchList(data);
 			IntroductionActivity.schoolInfos_list = data;
 			SchoolInfo sInfo = new SchoolInfo();
@@ -111,27 +112,25 @@ public class JsonSchoolInfo extends Thread {
 
 	}
 
-
-
 	public void setSchList(List<SchoolInfo> schList) {
 		this.schList = schList;
 	}
 
-
 	public List<SchoolInfo> parseJson(String result) {
 
 		try {
-			// JSONObject jsonObject = new JSONObject(result);
-			JSONArray jsonArray = new JSONArray(result);
+			JSONObject jsonObject = new JSONObject(result);
+			// JSONArray jsonArray = new JSONArray(result);
 			List<SchoolInfo> schools = new ArrayList<SchoolInfo>();
-			// JSONArray schoolaArray = jsonObject.getJSONArray(result);
-			for (int i = 0; i < jsonArray.length(); i++) {
+			JSONArray schoolaArray = jsonObject.getJSONArray("data");
+			for (int i = 0; i < schoolaArray.length(); i++) {
 				SchoolInfo sInfo = new SchoolInfo();
-				JSONObject sJsonObject = jsonArray.getJSONObject(i);
-				String address = sJsonObject.getString("address");
-				String describe = sJsonObject.getString("describe");
-				String name = sJsonObject.getString("name");
-				String imageUrl = sJsonObject.getString("picurl");
+				JSONObject sJsonObject = schoolaArray.getJSONObject(i);
+				String name = sJsonObject.getString("schoolname");
+				String address = sJsonObject.getString("schooladdress");
+				String describe = sJsonObject.getString("schoolintroduct");
+				String imageUrl = sJsonObject.getString("schoollogourl");
+				System.out.println("Json下来的name" + name);
 				sInfo.setSchool_address(address);
 				sInfo.setSchool_introduction(describe);
 				sInfo.setSchool_name(name);
@@ -148,10 +147,9 @@ public class JsonSchoolInfo extends Thread {
 
 	}
 
-
 	public List<SchoolInfo> getSchList() {
 		// TODO Auto-generated method stub
-		 return schList;
+		return schList;
 	}
 
 }

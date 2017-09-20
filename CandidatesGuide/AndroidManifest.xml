@@ -4,48 +4,73 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/iconfont_gaokao"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppBaseTheme" >
         <activity
             android:name="com.example.candidatesguide.MainActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                     
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
-            android:name="com.example.candidatesguide.MenuActivity" >
+        <activity
+            android:name="com.example.candidatesguide.MenuActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
-        <activity 
+        <activity
             android:name="com.example.candidatesguide.FindActivity"
-            ></activity>
-         <activity 
-            android:name="com.example.candidatesguide.PlanActivity"
-            ></activity>
-          <activity 
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity android:name="com.example.candidatesguide.PlanActivity" >
+        </activity>
+        <activity
             android:name="com.example.candidatesguide.ShareActivity"
-            ></activity>
-           <activity 
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.example.candidatesguide.IntroductionActivity"
-            ></activity>
-           <activity 
-            android:name="com.example.candidatesguide.Find_ShowActivity"
-            ></activity>
-           <activity 
-            android:name="com.example.candidatesguide.Introduction_ShowActivity"
-            ></activity>
-           
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity android:name="com.example.candidatesguide.Find_ShowActivity" >
+        </activity>
+        <activity android:name="com.example.candidatesguide.Introduction_ShowActivity" >
+        </activity>
+        <activity android:name="com.example.news.NewsOne" >
+        </activity>
+        <activity android:name="com.example.news.NewsTwo" >
+        </activity>
+        <activity android:name="com.example.news.NewsThree" >
+        </activity>
+        <activity android:name="com.example.fragments.DataFragmentShow" >
+        </activity>
+        <activity android:name="com.example.fragments.OtherFragmentShow" >
+        </activity>
+        <activity android:name="com.example.fragments.DataFragmentReview" >
+        </activity>
+        <activity android:name="com.example.fragments.OtherFragmentReview" >
+        </activity>
+        <activity android:name="com.example.candidatesguide.SchoolInfoShowActivity" >
+        </activity>
     </application>
 
 </manifest>

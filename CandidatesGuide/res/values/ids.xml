@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="city_spinner" type="id">false</item>
+    <item name="my_score" type="id">false</item>
+    <item name="my_position" type="id">false</item>
+    <item name="find_school_find" type="id">false</item>
+    <item name="back_title_introduction_ib" type="id">false</item>
+    <item name="school_name_Edit" type="id">false</item>
+    <item name="find_school_introduction" type="id">false</item>
+    <item name="show_null" type="id">false</item>
+    <item name="list_introduction" type="id">false</item>
+    <item name="school_msg_show" type="id">false</item>
+    <item name="school_logo" type="id">false</item>
+    <item name="school_name" type="id">false</item>
+    <item name="school_address" type="id">false</item>
+    <item name="school_introduction" type="id">false</item>
+    <item name="img_1" type="id">false</item>
+    <item name="img_2" type="id">false</item>
+    <item name="img_3" type="id">false</item>
+    <item name="img_4" type="id">false</item>
+    <item name="img_5" type="id">false</item>
+    <item name="sliding_menu" type="id">false</item>
+    <item name="sliding_title_menu_ib" type="id">false</item>
+    <item name="linear_viewflipper" type="id">false</item>
+    <item name="flipper_menu" type="id">false</item>
+    <item name="find_menu_button" type="id">false</item>
+    <item name="plan_menu_button" type="id">false</item>
+    <item name="share_menu_button" type="id">false</item>
+    <item name="introduction_menu_button" type="id">false</item>
+    <item name="back_title_share_ib" type="id">false</item>
+    <item name="rgroup" type="id">false</item>
+    <item name="data_rb" type="id">false</item>
+    <item name="other_rb" type="id">false</item>
+    <item name="viewpager" type="id">false</item>
+    <item name="action_settings" type="id">false</item>
+
+</resources>

@@ -1,44 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 制定按钮按下时的图片 -->
-    <item android:state_pressed="true">
-        <shape>
-
-            <!-- 填充的颜色 -->
+    <item android:state_pressed="true"><shape>
             <solid android:color="@color/tomato" />
 
-            <!-- 设置按钮的四个角为弧形 -->
-            <!-- android:radius 弧形的半径 -->
-            
-            <corners android:radius="10dip" />
+            <corners android:radius="10.0dip" />
 
-            <!-- padding：Button里面的文字与Button边界的间隔 -->
-            
-                 <padding android:bottom="10dp" 
-                android:left="10dp" 
-                android:right="10dp" 
-                android:top="10dp" />
-            
-        </shape>
-        
-     </item>
-    <!-- 指定按钮松开时的图片 -->
-    <item android:state_pressed="false">
-        <shape>
+            <padding android:bottom="10.0dip" android:left="10.0dip" android:right="10.0dip" android:top="10.0dip" />
+        </shape></item>
+    <item android:state_pressed="false"><shape>
             <solid android:color="@color/skyblue" />
 
-            <corners android:radius="10dip" />
+            <corners android:radius="10.0dip" />
 
-            
-               <padding android:bottom="10dp" 
-                android:left="10dp" 
-                android:right="10dp" 
-                android:top="10dp" />
-           
-
-        </shape>
-        
-    </item>
+            <padding android:bottom="10.0dip" android:left="10.0dip" android:right="10.0dip" android:top="10.0dip" />
+        </shape></item>
 
 </selector>
